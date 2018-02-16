@@ -1,0 +1,32 @@
+{
+  "name": "bulldozer/catalog",
+  "description": "Catalog module",
+  "type": "yii2-extension",
+  "authors": [
+    {
+      "name": "lan143",
+      "email": "lan143@lan143.ru"
+    }
+  ],
+  "require": {
+    "bulldozer/bulldozer": "*",
+    "bulldozer/files": "*",
+    "bulldozer/users": "*",
+    "bulldozer/seo": "^0.1.0",
+    "yiisoft/yii2-jui": "^2.0",
+    "yiisoft/yii2-mongodb": "^2.1",
+    "guiguiboy/php-cli-progress-bar": "^0.0.4",
+    "2amigos/yii2-ckeditor-widget": "^2.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "bulldozer\\catalog\\": "src"
+    }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  ]
+}
