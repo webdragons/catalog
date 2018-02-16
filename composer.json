@@ -16,7 +16,8 @@
     "yiisoft/yii2-jui": "^2.0",
     "yiisoft/yii2-mongodb": "^2.1",
     "guiguiboy/php-cli-progress-bar": "^0.0.4",
-    "2amigos/yii2-ckeditor-widget": "^2.1"
+    "2amigos/yii2-ckeditor-widget": "^2.1",
+    "bulldozer/menu": "^0.1.1"
   },
   "autoload": {
     "psr-4": {
