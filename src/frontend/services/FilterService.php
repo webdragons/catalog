@@ -61,6 +61,8 @@ class FilterService
         $params = $this->getFilterParams();
 
         if (isset($params['price']) && (!empty($params['price']['from']) || !empty($params['price']['to']))) {
+            $value = $params['price'];
+
             $this->query->joinWith(['prices', 'discounts']);
             $this->query->addSelect(['IF(' . Discount::tableName() . '.value > 0,
                 ' . Discount::tableName() . '.value,
