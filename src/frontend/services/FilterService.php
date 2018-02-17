@@ -63,10 +63,10 @@ class FilterService
         if (isset($params['price']) && (!empty($params['price']['from']) || !empty($params['price']['to']))) {
             $value = $params['price'];
 
-            $this->query->joinWith(['prices', 'discounts']);
-            $this->query->addSelect(['IF(' . Discount::tableName() . '.value > 0,
-                ' . Discount::tableName() . '.value,
-                ' . ProductPrice::tableName() . '.value) as filtered_price']);
+            $this->query->joinWith(['arPrice price', 'arDiscount discount']);
+            $this->query->addSelect(['IF(discount.value > 0,
+                discount.value,
+                price.value) as filtered_price']);
 
             if (!empty($value['from'])) {
                 $fromPrice = intval($value['from']);

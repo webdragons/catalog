@@ -13,6 +13,8 @@ use yii\helpers\Url;
 /**
  * Class Product
  * @package bulldozer\catalog\frontend\ar
+ *
+ * @property-read ProductPrice $arPrice
  */
 class Product extends \bulldozer\catalog\common\ar\Product
 {
@@ -76,6 +78,34 @@ class Product extends \bulldozer\catalog\common\ar\Product
     public function getFullViewUrl(): string
     {
         return $this->getViewUrl(true);
+    }
+
+    /**
+     * @return ActiveQuery
+     */
+    public function getArPrice(): ActiveQuery
+    {
+        $priceType = $this->priceService->getCurrentPriceType();
+
+        if ($priceType) {
+            return $this->hasOne(ProductPrice::class, ['product_id' => 'id'])->andOnCondition(['price_id' => $priceType->id]);
+        } else {
+            return $this->hasOne(ProductPrice::class, ['product_id' => 'id'])->andOnCondition(['price_id' => 0]);
+        }
+    }
+
+    /**
+     * @return ActiveQuery
+     */
+    public function getArDiscount(): ActiveQuery
+    {
+        $priceType = $this->priceService->getCurrentPriceType();
+
+        if ($priceType) {
+            return $this->hasOne(Discount::class, ['product_id' => 'id'])->andOnCondition(['price_id' => $priceType->id]);
+        } else {
+            return $this->hasOne(Discount::class, ['product_id' => 'id'])->andOnCondition(['price_id' => 0]);
+        }
     }
 
     /**
