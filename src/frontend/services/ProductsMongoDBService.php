@@ -36,7 +36,9 @@ class ProductsMongoDBService extends \bulldozer\catalog\common\services\Products
                         $query->andWhere(['properties' => [
                             '$elemMatch' => [
                                 'id' => $propertyId,
-                                'value' => count($propertyValue) == 1 ? $propertyValue[0] : ['$in' => $propertyValue],
+                                'value' => [
+                                    '$in' => $propertyValue
+                                ],
                             ],
                         ]]);
                     }
