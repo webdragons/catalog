@@ -33,8 +33,12 @@ class ProductsMongoDBService extends \bulldozer\catalog\common\services\Products
             if ($code == 'properties') {
                 foreach ($value as $propertyId => $propertyValue) {
                     if (is_array($propertyValue) && count($propertyValue) > 0) {
-                        $query->andWhere(['properties.id' => $propertyId]);
-                        $query->andWhere(['properties.value' => $propertyValue]);
+                        $query->andWhere(['properties' => [
+                            '$elemMatch' => [
+                                'id' => $propertyId,
+                                'value' => count($propertyValue) == 1 ? $propertyValue[0] : ['$in' => $propertyValue],
+                            ],
+                        ]]);
                     }
                 }
             }
