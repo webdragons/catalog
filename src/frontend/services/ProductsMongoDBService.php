@@ -2,6 +2,7 @@
 
 namespace bulldozer\catalog\frontend\services;
 
+use bulldozer\catalog\common\ar\Price;
 use bulldozer\catalog\frontend\ar\Section;
 use yii\helpers\ArrayHelper;
 use yii\mongodb\Query;
@@ -15,9 +16,10 @@ class ProductsMongoDBService extends \bulldozer\catalog\common\services\Products
     /**
      * @param Section|null $section
      * @param array $filter
+     * @param Price $price
      * @return array
      */
-    public function getFilteredProductIds(?Section $section, array $filter): array
+    public function getFilteredProductIds(?Section $section, array $filter, Price $price): array
     {
         $query = new Query();
         $query->select(['id'])
@@ -30,7 +32,28 @@ class ProductsMongoDBService extends \bulldozer\catalog\common\services\Products
         }
 
         foreach ($filter as $code => $value) {
-            if ($code == 'properties') {
+            if ($code == 'price' && (!empty($value['from']) || !empty($value['to']))) {
+                $parts = [];
+
+                if (!empty($value['from'])) {
+                    $parts['$gte'] = (float)$value['from'];
+                }
+
+                if (!empty($value['to'])) {
+                    $parts['$lte'] = (float)$value['to'];
+                }
+
+                if (count($parts) > 0) {
+                    $query->andWhere([
+                        'prices' => [
+                            '$elemMatch' => [
+                                'id' => $price->id,
+                                'value' => $parts,
+                            ],
+                        ]
+                    ]);
+                }
+            } elseif ($code == 'properties') {
                 foreach ($value as $propertyId => $propertyValue) {
                     if (is_array($propertyValue) && count($propertyValue) > 0) {
                         $query->andWhere(['properties' => [

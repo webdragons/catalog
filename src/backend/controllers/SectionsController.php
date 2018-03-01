@@ -252,7 +252,7 @@ class SectionsController extends Controller
 
         $section->deleteWithChildren();
 
-        Yii::$app->getSession()->addFlash('success', Yii::t('catalog', 'Section successful deleted'));
+        Yii::$app->getSession()->setFlashh('success', Yii::t('catalog', 'Section successful deleted'));
 
         if ($parent) {
             return $this->redirect(['view', 'id' => $parent->id]);

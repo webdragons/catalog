@@ -19,8 +19,6 @@ class ProductsService
     /**
      * @param Product $product
      * @return \bulldozer\catalog\frontend\entities\PropertyGroup[]
-     * @throws \yii\base\Exception
-     * @throws \yii\base\InvalidConfigException
      */
     public function getProperties(Product $product): array
     {
@@ -49,8 +47,6 @@ class ProductsService
     /**
      * @param Product $product
      * @return Property[]
-     * @throws \yii\base\Exception
-     * @throws \yii\base\InvalidConfigException
      */
     protected function getConvertedProperties(Product $product): array
     {

@@ -48,8 +48,24 @@ class ProductsMongoDBService
             'id' => $product->id,
             'name' => $product->name,
             'sections' => [(int) $product->section_id],
+            'prices' => [],
             'properties' => [],
         ];
+
+        foreach ($product->prices as $price) {
+            $discount = null;
+            foreach ($product->discounts as $_discount) {
+                if ($price->price_id == $_discount->price_id) {
+                    $discount = $_discount;
+                    break;
+                }
+            }
+
+            $cacheProduct['prices'][] = [
+                'id' => $price->price_id,
+                'value' => (float)($discount ? $discount->value : $price->value),
+            ];
+        }
 
         foreach ($product->propertyValues as $propertyValue) {
             $cacheProduct['properties'][] = [

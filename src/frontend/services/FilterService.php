@@ -43,14 +43,21 @@ class FilterService
     private $cacheProvider;
 
     /**
+     * @var PriceService
+     */
+    private $priceService;
+
+    /**
      * FilterService constructor.
      * @param ProductsMongoDBService $productsMongoDBService
+     * @param PriceService $priceService
      */
-    public function __construct(ProductsMongoDBService $productsMongoDBService)
+    public function __construct(ProductsMongoDBService $productsMongoDBService, PriceService $priceService)
     {
         $this->productsMongoDBService = $productsMongoDBService;
 
         $this->cacheProvider = App::$app->cache;
+        $this->priceService = $priceService;
     }
 
     /**
@@ -60,28 +67,7 @@ class FilterService
     {
         $params = $this->getFilterParams();
 
-        if (isset($params['price']) && (!empty($params['price']['from']) || !empty($params['price']['to']))) {
-            $value = $params['price'];
-
-            $this->query->joinWith(['arPrice price', 'arDiscount discount']);
-            $this->query->addSelect(['IF(discount.value > 0,
-                discount.value,
-                price.value) as filtered_price']);
-
-            if (!empty($value['from'])) {
-                $fromPrice = intval($value['from']);
-
-                $this->query->andHaving(['>=', 'filtered_price', $fromPrice]);
-            }
-
-            if (!empty($value['to'])) {
-                $fromPrice = intval($value['to']);
-
-                $this->query->andHaving(['<=', 'filtered_price', $fromPrice]);
-            }
-        }
-
-        $productIds = $this->productsMongoDBService->getFilteredProductIds($this->section, $params);
+        $productIds = $this->productsMongoDBService->getFilteredProductIds($this->section, $params, $this->priceService->getCurrentPriceType());
 
         if (count($productIds) > 0) {
             $this->query->andWhere([Product::tableName() . '.id' => $productIds]);
