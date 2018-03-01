@@ -240,7 +240,7 @@ class FilterService
                 ->all();
 
             foreach ($propertiesAR as $propertyAR) {
-                $property = new FilterProperty($propertyAR->id, $propertyAR->name, $propertyAR->property_type);
+                $property = new FilterProperty($propertyAR->id, $propertyAR->name, $propertyAR->type);
 
                 if ($property->getType() == PropertyTypesEnum::TYPE_ENUM) {
                     foreach ($propertyAR->enums as $propertyEnum) {
