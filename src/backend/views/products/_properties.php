@@ -16,7 +16,7 @@ use yii\helpers\ArrayHelper;
         <?php if ($property->multiple == 0): ?>
             <?= $form->field($model, 'properties[' . $property->id . ']')
                 ->dropDownList(ArrayHelper::map($property->enums, 'id', 'value'), [
-                    'prompt' => Yii::t('app', 'Not selected')
+                    'prompt' => Yii::t('catalog', 'Not selected')
                 ])
                 ->label($property->name) ?>
         <?php else: ?>
@@ -29,7 +29,7 @@ use yii\helpers\ArrayHelper;
     <?php elseif ($property->type == PropertyTypesEnum::TYPE_BOOLEAN): ?>
         <?= $form->field($model, 'properties[' . $property->id . ']')
             ->dropDownList([1 => Yii::t('catalog', 'Yes'), 0 => Yii::t('catalog', 'No')], [
-                'prompt' => Yii::t('app', 'Not selected')
+                'prompt' => Yii::t('catalog', 'Not selected')
             ])
             ->label($property->name) ?>
     <?php elseif ($property->type == PropertyTypesEnum::TYPE_URL): ?>

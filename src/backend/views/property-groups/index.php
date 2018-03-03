@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'dataProvider' => $dataProvider,
                             'columns' => [
                                 [
-                                    'label' => Yii::t('app', 'ID'),
+                                    'label' => Yii::t('catalog', 'ID'),
                                     'attribute' => 'id',
                                 ],
                                 [
@@ -45,21 +45,21 @@ $this->params['breadcrumbs'][] = $this->title;
                                     'attribute' => 'sort'
                                 ],
                                 [
-                                    'label' => Yii::t('app', 'Created at'),
+                                    'label' => Yii::t('catalog', 'Created at'),
                                     'attribute' => 'created_at',
                                     'format' => 'datetime',
                                 ],
                                 [
-                                    'label' => Yii::t('app', 'Updated at'),
+                                    'label' => Yii::t('catalog', 'Updated at'),
                                     'attribute' => 'updated_at',
                                     'format' => 'datetime',
                                 ],
                                 [
-                                    'label' => Yii::t('app', 'Creator'),
+                                    'label' => Yii::t('catalog', 'Creator'),
                                     'attribute' => 'creator.email'
                                 ],
                                 [
-                                    'label' => Yii::t('app', 'Updater'),
+                                    'label' => Yii::t('catalog', 'Updater'),
                                     'attribute' => 'updater.email'
                                 ],
                                 [

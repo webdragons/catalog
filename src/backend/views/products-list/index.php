@@ -63,17 +63,17 @@ $this->params['breadcrumbs'][] = $this->title;
                                 }
                             ],
                             [
-                                'label' => Yii::t('app', 'Created at'),
+                                'label' => Yii::t('catalog', 'Created at'),
                                 'attribute' => 'created_at',
                                 'format' => 'datetime',
                             ],
                             [
-                                'label' => Yii::t('app', 'Updated at'),
+                                'label' => Yii::t('catalog', 'Updated at'),
                                 'attribute' => 'updated_at',
                                 'format' => 'datetime',
                             ],
                             [
-                                'label' => Yii::t('app', 'Updater'),
+                                'label' => Yii::t('catalog', 'Updater'),
                                 'attribute' => 'updater.email'
                             ],
                             [

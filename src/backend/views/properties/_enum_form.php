@@ -20,7 +20,7 @@ use yii\widgets\ActiveForm;
 <?= $form->field($model, 'value')->textInput(['maxlength' => true]) ?>
 
 <div class="form-group">
-    <?= Html::submitButton($isNew ? Yii::t('app', 'Create') : Yii::t('catalog', 'Update'),
+    <?= Html::submitButton($isNew ? Yii::t('catalog', 'Create') : Yii::t('catalog', 'Update'),
         ['class' => $isNew ? 'btn btn-success' : 'btn btn-primary']) ?>
 </div>
 

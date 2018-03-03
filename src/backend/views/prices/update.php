@@ -4,7 +4,7 @@ use yii\helpers\Html;
 
 /**
  * @var yii\web\View $this
- * @var \bulldozer\catalog\backend\controllers\PriceForm $model
+ * @var \bulldozer\catalog\backend\forms\PriceForm $model
  * @var \bulldozer\catalog\common\ar\Price $price
  * @var \bulldozer\catalog\common\ar\Currency[] $currencies
  * @var \bulldozer\catalog\common\ar\Price[] $prices
@@ -13,7 +13,7 @@ use yii\helpers\Html;
 $this->title = Yii::t('catalog', 'Update price type: {name}', ['name' => $price->name]);
 $this->params['breadcrumbs'][] = ['label' => Yii::t('catalog', 'Price types'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $price->name;
-$this->params['breadcrumbs'][] = Yii::t('app', 'Update');
+$this->params['breadcrumbs'][] = Yii::t('catalog', 'Update');
 ?>
 <div class="row">
     <div class="col-md-12">

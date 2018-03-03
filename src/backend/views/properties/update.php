@@ -14,7 +14,7 @@ use yii\helpers\Url;
 $this->title = Yii::t('catalog', 'Update property: {name}', ['name' => $property->name]);
 $this->params['breadcrumbs'][] = ['label' => Yii::t('catalog', 'Properties'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $property->name, 'url' => ['view', 'id' => $property->id]];
-$this->params['breadcrumbs'][] = Yii::t('app', 'Update');
+$this->params['breadcrumbs'][] = Yii::t('catalog', 'Update');
 ?>
 <div class="row">
     <div class="col-md-12">

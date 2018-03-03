@@ -19,7 +19,7 @@ foreach ($parents as $parent) {
 }
 
 $this->params['breadcrumbs'][] = ['label' => $section->name, 'url' => ['view', 'id' => $section->id]];
-$this->params['breadcrumbs'][] = Yii::t('app', 'Update');
+$this->params['breadcrumbs'][] = Yii::t('catalog', 'Update');
 
 $this->title = Yii::t('catalog', 'Update section: {name}', ['name' => $section->name]);
 ?>

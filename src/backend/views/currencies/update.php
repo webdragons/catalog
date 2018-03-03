@@ -11,7 +11,7 @@ use yii\helpers\Html;
 $this->title = Yii::t('catalog', 'Update currency: {name}', ['name' => $currency->name]);
 $this->params['breadcrumbs'][] = ['label' => Yii::t('catalog', 'Currencies'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $currency->name;
-$this->params['breadcrumbs'][] = Yii::t('app', 'Update');
+$this->params['breadcrumbs'][] = Yii::t('catalog', 'Update');
 ?>
 <div class="row">
     <div class="col-md-12">

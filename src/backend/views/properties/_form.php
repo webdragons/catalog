@@ -23,7 +23,7 @@ use yii\widgets\ActiveForm;
 <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
 <?= $form->field($model, 'type')->dropDownList(PropertyTypesEnum::$list, [
-    'prompt' => Yii::t('app', 'Not selected'),
+    'prompt' => Yii::t('catalog', 'Not selected'),
 ]) ?>
 
 <?= $form->field($model, 'sort')->textInput(['type' => 'integer']) ?>

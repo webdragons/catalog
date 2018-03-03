@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php endif ?>
 
                 <?= $form->field($model, 'price_id')->dropDownList($prices, [
-                    'prompt' => Yii::t('app', 'Not selected'),
+                    'prompt' => Yii::t('catalog', 'Not selected'),
                 ]) ?>
 
                 <?= $form->field($model, 'sections')->dropDownList($sections, [
