@@ -91,7 +91,7 @@ class SectionForm extends Form
                 ]
             ],
 
-            [['image'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg'],
+            [['image'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg, jpeg'],
 
             /** @todo Implement watermark support in file module */
             /*['watermark_id', 'integer'],

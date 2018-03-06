@@ -85,7 +85,7 @@ class ProductForm extends Form
 
             ['description', 'string', 'max' => 60000],
 
-            ['images', 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg', 'maxFiles' => 20],
+            ['images', 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg, jpeg', 'maxFiles' => 20],
 
             ['active', 'boolean'],
 
