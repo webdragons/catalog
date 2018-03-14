@@ -38,7 +38,6 @@ class ProductService
     /**
      * @param Product|null $product
      * @return ProductForm
-     * @throws \yii\base\InvalidConfigException
      */
     public function getForm(?Product $product = null): ProductForm
     {
@@ -69,7 +68,7 @@ class ProductService
 
                 if ($propertyValue->property->multiple == 1) {
                     if (!isset($this->properties[$propertyValue->property_id])
-                        || !is_array($form->properties[$propertyValue->property_id])
+                        && !is_array($form->properties[$propertyValue->property_id])
                     ) {
                         $form->properties[$propertyValue->property_id] = [];
                     }
@@ -108,9 +107,8 @@ class ProductService
      * @param ProductForm $form
      * @param Product|null $product
      * @return Product
-     * @throws \yii\base\InvalidConfigException
-     * @throws \yii\db\Exception
      * @throws Exception
+     * @throws \yii\mongodb\Exception
      */
     public function save(ProductForm $form, ?Product $product = null): Product
     {
@@ -142,7 +140,6 @@ class ProductService
     /**
      * @param ProductForm $form
      * @param Product $product
-     * @throws \yii\base\InvalidConfigException
      * @throws Exception
      */
     protected function saveProductPrices(ProductForm $form, Product $product): void
@@ -168,7 +165,6 @@ class ProductService
      * @param ProductForm $form
      * @param Product $product
      * @throws Exception
-     * @throws \yii\base\InvalidConfigException
      */
     protected function saveProductDiscounts(ProductForm $form, Product $product): void
     {
@@ -194,7 +190,6 @@ class ProductService
      * @param Product $product
      * @return void
      * @throws Exception
-     * @throws \yii\base\InvalidConfigException
      */
     protected function saveImages(ProductForm $form, Product $product): void
     {
@@ -237,7 +232,6 @@ class ProductService
      * @param Product $product
      * @return void
      * @throws Exception
-     * @throws \yii\base\InvalidConfigException
      */
     protected function saveProperties(ProductForm $form, Product $product): void
     {
