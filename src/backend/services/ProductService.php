@@ -67,8 +67,8 @@ class ProductService
                 }
 
                 if ($propertyValue->property->multiple == 1) {
-                    if (!isset($this->properties[$propertyValue->property_id])
-                        && !is_array($form->properties[$propertyValue->property_id])
+                    if (!isset($form->properties[$propertyValue->property_id])
+                        || !is_array($form->properties[$propertyValue->property_id])
                     ) {
                         $form->properties[$propertyValue->property_id] = [];
                     }
