@@ -56,7 +56,7 @@ $this->registerJs($script, View::POS_READY);
 
 <?php if ($section && $section->image): ?>
     <label for="">Текущее изображение</label>
-    <img src="<?= $section->image->getThumbnail(219, 108) ?>" class="img-responsive"/>
+    <img src="<?= $section->image->getFullThumbnail(219, 108) ?>" class="img-responsive"/>
     <p>При загрузке нового изображения текущее будет удалено.</p>
 <?php endif ?>
 
