@@ -39,7 +39,8 @@ $this->title = Yii::t('catalog', 'Update section: {name}', ['name' => $section->
                     'model' => $model,
                     'isNew' => false,
                     'sections' => $sections,
-                    'properties' => $properties
+                    'properties' => $properties,
+                    'section' => $section,
                 ]) ?>
             </div>
         </section>

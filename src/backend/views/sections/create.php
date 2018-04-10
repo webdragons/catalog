@@ -40,7 +40,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     'model' => $model,
                     'isNew' => true,
                     'sections' => $sections,
-                    'properties' => $properties
+                    'properties' => $properties,
+                    'section' => null,
                 ]) ?>
             </div>
         </section>

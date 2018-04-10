@@ -6,6 +6,7 @@
  * @var array $properties
  * @var bool $isNew
  * @var \bulldozer\seo\backend\services\SeoService $seoService
+ * @var \bulldozer\catalog\common\ar\Section $section
  */
 
 use bulldozer\catalog\backend\widgets\SaveButtonsWidget;
@@ -52,6 +53,12 @@ $this->registerJs($script, View::POS_READY);
 <?= $form->field($model, 'parent_id')->dropDownList($sections, [
     'prompt' => 'Не выбрано',
 ]) ?>
+
+<?php if ($section && $section->image): ?>
+    <label for="">Текущее изображение</label>
+    <img src="<?= $section->image->getThumbnail(219, 108) ?>" class="img-responsive"/>
+    <p>При загрузке нового изображения текущее будет удалено.</p>
+<?php endif ?>
 
 <?= $form->field($model, 'image')->fileInput(['accept' => 'image/*']) ?>
 
